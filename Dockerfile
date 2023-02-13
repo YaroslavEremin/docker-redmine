@@ -8,3 +8,6 @@ RUN cd plugins && \
 # Install Agile plugin https://www.redmineup.com/pages/help/agile/installing-redmine-agile-plugin-on-linux?utm_source=Main&utm_medium=email&utm_campaign=Download_plugin_email&utm_term=download_plugin_email&utm_content=installation_guide
 ADD redmine_agile-1_6_5-light.zip plugins/
 RUN bundle install --without development test --no-deployment
+
+# Add script with DB migrations
+ADD db-migrations.sh ./
