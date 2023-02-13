@@ -6,8 +6,9 @@ RUN cd plugins && \
     rm -rf redmine_drawio/.git
     
 # Install Agile plugin https://www.redmineup.com/pages/help/agile/installing-redmine-agile-plugin-on-linux?utm_source=Main&utm_medium=email&utm_campaign=Download_plugin_email&utm_term=download_plugin_email&utm_content=installation_guide
-ADD redmine_agile.tar plugins/
+ADD --chown=redmine:redmine redmine_agile.tar plugins/
 RUN bundle install --without development test --no-deployment
 
 # Add script with DB migrations
-ADD db-migrations.sh ./
+ADD --chown=redmine:redmine db-migrations.sh ./
+RUN chmod 755 db-migrations.sh
